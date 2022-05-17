@@ -1,4 +1,4 @@
-FROM nginx:1.20-alpine
+FROM nginxinc/nginx-unprivileged
 
 COPY ./build /var/www/appsmith
 
