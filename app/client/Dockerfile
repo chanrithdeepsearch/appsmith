@@ -4,7 +4,7 @@ COPY ./build /var/www/appsmith
 
 EXPOSE 80
 
-ENV APPSMITH_SERVER_PROXY_PASS="http://appsmith-internal-server:8080"
+ENV APPSMITH_SERVER_PROXY_PASS="http://appsmith-backend-service:8080"
 
 # This is the default nginx template file inside the container.
 # This is replaced by the install.sh script during a deployment
@@ -17,4 +17,6 @@ COPY ./docker/templates/nginx-app-https.conf.template /nginx-app-https.conf.temp
 # This is the script that is used to start Nginx when the Docker container starts
 COPY ./docker/start-nginx.sh /start-nginx.sh
 HEALTHCHECK --interval=15s --timeout=15s --start-period=15s --retries=3 CMD curl -f http://localhost:80/ || exit 1
+ENV NGINX_PORT 80
+
 CMD ["/start-nginx.sh"]
