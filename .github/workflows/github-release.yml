@@ -44,12 +44,12 @@ jobs:
     needs:
       - prelude
 
-    runs-on: ubuntu-latest
+    runs-on: buildjet-8vcpu-ubuntu-2004
 
-    # defaults:
-    #   run:
-    #     working-directory: app/client
-    #     shell: bash
+    defaults:
+      run:
+        working-directory: app/client
+        shell: bash
 
     steps:
       # Checkout the code
@@ -76,9 +76,7 @@ jobs:
             ${{ runner.OS }}-
 
       - name: Install dependencies
-        run: yarn install
-      - name: post dependencies
-        run: yarn postinstall
+        run: yarn install --frozen-lockfile
 
       - name: Create the bundle
         env:
@@ -163,10 +161,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 16.14.0
+      - name: Use Node.js 14.15.4
         uses: actions/setup-node@v1
         with:
-          node-version: "16.14.0"
+          node-version: "14.15.4"
 
       - name: Build
         run: |
