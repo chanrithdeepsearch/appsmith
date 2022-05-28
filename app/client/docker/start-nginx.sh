@@ -33,4 +33,4 @@ cat "$app_template" \
   | sed -e 's|\${\(APPSMITH_[A-Z0-9_]*\)}||g' \
   | tee /etc/nginx/conf.d/default.conf
 
-# exec nginx -g 'daemon off;'
+exec nginx -g 'daemon off;'

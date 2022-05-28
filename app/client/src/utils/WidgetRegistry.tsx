@@ -144,6 +144,12 @@ import VideoWidget, {
 import ProgressWidget, {
   CONFIG as PROGRESS_WIDGET_CONFIG,
 } from "widgets/ProgressWidget";
+
+// custom widget
+import HelloButtonWidget, {
+  CONFIG as HELLO_BUTTON_WIDGET_CONFIG,
+} from "widgets/HelloButtonWidget";
+
 import { registerWidget } from "./WidgetRegisterHelpers";
 import { WidgetConfiguration } from "widgets/constants";
 
@@ -201,6 +207,7 @@ export const ALL_WIDGETS_AND_CONFIG = [
   [CurrencyInputWidget, CURRENCY_INPUT_WIDGET_V2_CONFIG],
   [JSONFormWidget, JSON_FORM_WIDGET_CONFIG],
   [ProgressWidget, PROGRESS_WIDGET_CONFIG],
+  [HelloButtonWidget, HELLO_BUTTON_WIDGET_CONFIG],
   /*
    * If a newly added widget works well inside the list widget,
    * please add widget type in the List widget's allowed widget
