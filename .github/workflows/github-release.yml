@@ -77,6 +77,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: post dependencies
+        run: yarn postinstall
 
       - name: Create the bundle
         env:
