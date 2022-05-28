@@ -44,12 +44,12 @@ jobs:
     needs:
       - prelude
 
-    runs-on: buildjet-8vcpu-ubuntu-2004
+    runs-on: runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: app/client
-        shell: bash
+    # defaults:
+    #   run:
+    #     working-directory: app/client
+    #     shell: bash
 
     steps:
       # Checkout the code
