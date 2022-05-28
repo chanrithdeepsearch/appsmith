@@ -10,6 +10,8 @@ import {
   isJSAction,
 } from "workers/evaluationUtils";
 import forge from "node-forge";
+import CryptoJS from "crypto-js";
+
 import { DataTreeEntity } from "entities/DataTree/dataTreeFactory";
 import { getType, Types } from "./TypeHelpers";
 
@@ -183,6 +185,13 @@ export const extraLibraries: ExtraLibrary[] = [
     docsURL: "https://github.com/digitalbazaar/forge",
     displayName: "forge",
   },
+  {
+    accessor: "cryptoJs",
+    lib: CryptoJS,
+    version: "4.1.1",
+    docsURL: "https://github.com/brix/crypto-js",
+    displayName: "CryptoJS",
+  },
 ];
 
 /**
@@ -351,7 +360,7 @@ export const EVAL_ERROR_PATH = `${EVALUATION_PATH}.errors`;
 export const EVAL_VALUE_PATH = `${EVALUATION_PATH}.evaluatedValues`;
 
 /**
- * non-populated object 
+ * non-populated object
  {
    __evaluation__:{
      evaluatedValues:{
