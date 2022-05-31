@@ -63,4 +63,7 @@ module.exports = merge(common, {
       },
     },
   },
+  babel: {
+    plugins: ["@babel/plugin-proposal-class-properties"],
+  },
 });

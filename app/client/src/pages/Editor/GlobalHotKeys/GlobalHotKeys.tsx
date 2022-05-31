@@ -1,8 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AppState } from "reducers";
-import { Hotkey, Hotkeys } from "@blueprintjs/core";
-import { HotkeysTarget } from "@blueprintjs/core/lib/esnext/components/hotkeys/hotkeysTarget.js";
+import {
+  Hotkey,
+  Hotkeys,
+  HotkeysTarget2,
+  HotkeyConfig,
+} from "@blueprintjs/core";
+// import { HotkeysTarget } from "@blueprintjs/core/lib/esnext/components/hotkeys/hotkeysTarget.js";
+
 import {
   closePropertyPane,
   closeTableFilterPane,
@@ -83,7 +89,6 @@ type Props = {
   getMousePosition: () => { x: number; y: number };
 };
 
-@HotkeysTarget
 class GlobalHotKeys extends React.Component<Props> {
   public stopPropagationIfWidgetSelected(e: KeyboardEvent): boolean {
     const multipleWidgetsSelected =
@@ -363,7 +368,7 @@ class GlobalHotKeys extends React.Component<Props> {
             }
           }}
         />
-        <Hotkey
+        {/* <Hotkey
           combo="mod + s"
           global
           label="Save progress"
@@ -375,8 +380,8 @@ class GlobalHotKeys extends React.Component<Props> {
           }}
           preventDefault
           stopPropagation
-        />
-        <Hotkey
+        /> */}
+        {/* <Hotkey
           combo="p"
           global
           label="Preview Mode"
@@ -384,29 +389,86 @@ class GlobalHotKeys extends React.Component<Props> {
             setCommentModeInUrl(false);
             this.props.setPreviewModeAction(!this.props.isPreviewMode);
           }}
-        />
-        <Hotkey
+        /> */}
+        {/* <Hotkey
           combo="mod + /"
           global
           label="Pin/Unpin Entity Explorer"
           onKeyDown={() => {
             this.props.setExplorerPinnedAction(!this.props.isExplorerPinned);
           }}
-        />
-        <Hotkey
+        /> */}
+        {/* <Hotkey
           combo="ctrl + shift + g"
           global
           label="Show git commit modal"
           onKeyDown={() => {
             this.props.showCommitModal();
           }}
-        />
+        /> */}
       </Hotkeys>
     );
   }
+  get hotKeysConfig(): HotkeyConfig[] {
+    return [
+      {
+        combo: "ctrl + shift + g",
+        onKeyDown: () => {
+          this.props.showCommitModal();
+        },
+        global: true,
+        label: "Show git commit modal",
+      },
+      {
+        combo: "mod + /",
+        onKeyDown: () => {
+          this.props.setExplorerPinnedAction(!this.props.isExplorerPinned);
+        },
+        global: true,
+        label: "Pin/Unpin Entity Explorer",
+      },
+      {
+        combo: "p",
+        onKeyDown: () => {
+          setCommentModeInUrl(false);
+          this.props.setPreviewModeAction(!this.props.isPreviewMode);
+        },
+        global: true,
+        label: "Preview mode",
+      },
+      {
+        combo: "mod + s",
+        onKeyDown: (e) => {
+          Toaster.show({
+            text: createMessage(SAVE_HOTKEY_TOASTER_MESSAGE),
+            variant: Variant.info,
+          });
+          e.preventDefault();
+          e.stopPropagation();
+        },
+        global: true,
+        label: "Save progress",
+      },
+    ];
+  }
 
+  // render() {
+  //   return <div>{this.props.children}</div>;
+  // }
   render() {
-    return <div>{this.props.children}</div>;
+    return (
+      <HotkeysTarget2 hotkeys={this.hotKeysConfig}>
+        {({ handleKeyDown, handleKeyUp }) => (
+          // <div tabIndex={0} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
+          //   Press "R" to refresh data, "F" to focus the input...
+          //   <InputGroup ref={this.handleInputRef} />
+          // </div>
+          <div onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
+            {this.props.children}
+          </div>
+        )}
+      </HotkeysTarget2>
+    );
   }
 }
 

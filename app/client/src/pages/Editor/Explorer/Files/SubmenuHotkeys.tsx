@@ -1,6 +1,11 @@
 import React from "react";
-import { HotkeysTarget } from "@blueprintjs/core/lib/esnext/components/hotkeys/hotkeysTarget.js";
-import { Hotkey, Hotkeys } from "@blueprintjs/core";
+// import { HotkeysTarget } from "@blueprintjs/core/lib/esnext/components/hotkeys/hotkeysTarget.js";
+import {
+  // Hotkey,
+  HotkeyConfig,
+  // Hotkeys,
+  HotkeysTarget2,
+} from "@blueprintjs/core";
 import { SelectEvent } from "components/editorComponents/GlobalSearch/utils";
 
 type Props = {
@@ -10,9 +15,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-@HotkeysTarget
 class SubmenuHotKeys extends React.Component<Props> {
-  get hotKeysConfig() {
+  get hotKeysConfig(): HotkeyConfig[] {
     return [
       {
         combo: "up",
@@ -37,27 +41,42 @@ class SubmenuHotKeys extends React.Component<Props> {
     ];
   }
 
-  renderHotkeys() {
-    return (
-      <Hotkeys>
-        {this.hotKeysConfig.map(
-          ({ allowInInput, combo, label, onKeyDown }, index) => (
-            <Hotkey
-              allowInInput={allowInInput}
-              combo={combo}
-              global={false}
-              key={index}
-              label={label}
-              onKeyDown={onKeyDown}
-            />
-          ),
-        )}
-      </Hotkeys>
-    );
-  }
+  // renderHotkeys() {
+  //   return (
+  //     <Hotkeys>
+  //       {this.hotKeysConfig.map(
+  //         ({ allowInInput, combo, label, onKeyDown }, index) => (
+  //           <Hotkey
+  //             allowInInput={allowInInput}
+  //             combo={combo}
+  //             global={false}
+  //             key={index}
+  //             label={label}
+  //             onKeyDown={onKeyDown}
+  //           />
+  //         ),
+  //       )}
+  //     </Hotkeys>
+  //   );
+  // }
 
+  // render() {
+  //   return <div>{this.props.children}</div>;
+  // }
   render() {
-    return <div>{this.props.children}</div>;
+    return (
+      <HotkeysTarget2 hotkeys={this.hotKeysConfig}>
+        {({ handleKeyDown, handleKeyUp }) => (
+          // <div tabIndex={0} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
+          //   Press "R" to refresh data, "F" to focus the input...
+          //   <InputGroup ref={this.handleInputRef} />
+          // </div>
+          <div onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
+            {this.props.children}
+          </div>
+        )}
+      </HotkeysTarget2>
+    );
   }
 }
 
