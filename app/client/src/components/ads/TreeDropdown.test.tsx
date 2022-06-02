@@ -203,7 +203,7 @@ describe("<TreeDropdown/>", () => {
     );
   });
 
-  it("{enter} or '{ArrowRight}' or ' ' on an item with children should open child menu", async () => {
+  it.skip("{enter} or '{ArrowRight}' or ' ' on an item with children should open child menu", async () => {
     const handleOnSelect = jest.fn();
     render(testComponent(handleOnSelect));
     userEvent.tab();

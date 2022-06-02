@@ -4,6 +4,7 @@ import BaseWidget, { WidgetProps, WidgetState } from "widgets/BaseWidget";
 import { DerivedPropertiesMap } from "utils/WidgetFactory";
 
 import HelloButtonComponent from "../component";
+import { ValidationTypes } from "constants/WidgetValidation";
 
 class HelloButtonWidget extends BaseWidget<
   HelloButtonWidgetProps,
@@ -19,9 +20,10 @@ class HelloButtonWidget extends BaseWidget<
             label: "Title",
             helpText: "Title of the Button",
             controlType: "INPUT_TEXT",
-            isBindProperty: false,
+            isBindProperty: true,
             isTriggerProperty: false,
             isJSconvertible: false,
+            validation: { type: ValidationTypes.TEXT },
           },
         ],
       },
