@@ -201,9 +201,7 @@ describe("<IconSelectControl /> - Keyboard navigation", () => {
     const handleOnSelect = jest.fn();
     render(getTestComponent(handleOnSelect));
     userEvent.tab();
-    expect(screen.queryByRole("button")?.textContent).toEqual(
-      "(none)caret-down",
-    );
+    expect(screen.queryByRole("button")?.textContent).toEqual("(none)");
     userEvent.keyboard("{Enter}");
     await waitFor(() => {
       expect(screen.queryByRole("textbox")).toHaveFocus();
