@@ -103,7 +103,7 @@ gap: 8px;
   ${buttonHoverActiveStyles}
  }
 
-${({ buttonColor, buttonVariant, theme }) => `
+${({ buttonColor, buttonTextColor, buttonVariant, theme }) => `
     background: ${
       getCustomBackgroundColor(buttonVariant, buttonColor) !== "none"
         ? getCustomBackgroundColor(buttonVariant, buttonColor)
@@ -149,7 +149,9 @@ ${({ buttonColor, buttonVariant, theme }) => `
     line-height: normal;
 
     color: ${
-      buttonVariant === ButtonVariantTypes.PRIMARY
+      buttonTextColor && buttonTextColor != ""
+        ? buttonTextColor
+        : buttonVariant === ButtonVariantTypes.PRIMARY
         ? getComplementaryGrayscaleColor(buttonColor)
         : getCustomBackgroundColor(ButtonVariantTypes.PRIMARY, buttonColor)
     } !important;
@@ -186,6 +188,7 @@ export const StyledButton = styled((props) => (
 
 export type ButtonStyleProps = {
   buttonColor?: string;
+  buttonTextColor?: string;
   buttonVariant?: ButtonVariant;
   boxShadow?: string;
   boxShadowColor?: string;
@@ -202,6 +205,7 @@ export function BaseButton(props: IButtonProps & ButtonStyleProps) {
     boxShadow,
     boxShadowColor,
     buttonColor,
+    buttonTextColor,
     buttonVariant,
     className,
     disabled,
@@ -232,6 +236,7 @@ export function BaseButton(props: IButtonProps & ButtonStyleProps) {
         boxShadow={boxShadow}
         boxShadowColor={boxShadowColor}
         buttonColor={buttonColor}
+        buttonTextColor={buttonTextColor}
         buttonVariant={buttonVariant}
         className={className}
         data-test-variant={buttonVariant}
@@ -279,6 +284,7 @@ interface ButtonComponentProps extends ComponentProps {
   rightIcon?: IconName | MaybeElement;
   type: ButtonType;
   buttonColor?: string;
+  buttonTextColor?: string;
   buttonVariant?: ButtonVariant;
   borderRadius?: string;
   boxShadow?: string;
@@ -450,6 +456,7 @@ function ButtonComponent(props: ButtonComponentProps & RecaptchaProps) {
         boxShadow={props.boxShadow}
         boxShadowColor={props.boxShadowColor}
         buttonColor={props.buttonColor}
+        buttonTextColor={props.buttonTextColor}
         buttonVariant={props.buttonVariant}
         disabled={props.isDisabled}
         icon={props.icon}

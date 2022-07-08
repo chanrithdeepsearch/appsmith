@@ -149,6 +149,16 @@ class ButtonWidget extends BaseWidget<ButtonWidgetProps, ButtonWidgetState> {
             validation: { type: ValidationTypes.TEXT },
           },
           {
+            propertyName: "buttonTextColor",
+            helpText: "Changes the text color of the button",
+            label: "Button Text Color",
+            controlType: "COLOR_PICKER",
+            isJSConvertible: true,
+            isBindProperty: true,
+            isTriggerProperty: false,
+            validation: { type: ValidationTypes.TEXT },
+          },
+          {
             propertyName: "buttonVariant",
             label: "Button Variant",
             controlType: "DROP_DOWN",
@@ -353,6 +363,7 @@ class ButtonWidget extends BaseWidget<ButtonWidgetProps, ButtonWidgetState> {
         borderRadius={this.props.borderRadius}
         boxShadow={this.props.boxShadow}
         buttonColor={this.props.buttonColor}
+        buttonTextColor={this.props.buttonTextColor}
         buttonVariant={this.props.buttonVariant}
         clickWithRecaptcha={this.clickWithRecaptchaBound}
         googleRecaptchaKey={this.props.googleRecaptchaKey}
@@ -389,6 +400,7 @@ export interface ButtonWidgetProps extends WidgetProps {
   googleRecaptchaKey?: string;
   buttonVariant?: ButtonVariant;
   buttonColor?: string;
+  buttonTextColor?: string;
   borderRadius?: string;
   boxShadow?: string;
   iconName?: IconName;
