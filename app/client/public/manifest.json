@@ -1,9 +1,9 @@
 {
-  "short_name": "Appsmith App",
-  "name": "Appsmith Client Web UI",
+  "short_name": "딦서치 백오피스",
+  "name": "딦서치 백오피스",
   "icons": [
     {
-      "src": "favicon-orange.ico",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

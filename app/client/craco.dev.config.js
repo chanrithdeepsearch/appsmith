@@ -4,7 +4,7 @@ module.exports = merge(common, {
   babel: {
     plugins: [
       "babel-plugin-styled-components",
-      "@babel/plugin-proposal-class-properties",
+      //"@babel/plugin-proposal-class-properties",
     ],
   },
   optimization: {
