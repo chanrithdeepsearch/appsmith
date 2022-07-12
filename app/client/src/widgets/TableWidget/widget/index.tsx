@@ -282,10 +282,12 @@ class TableWidget extends BaseWidget<TableWidgetProps, WidgetState> {
                 },
               ],
               iconName: cellProperties.iconName as IconName,
+              customIconName: cellProperties.customIconName || "",
               buttonColor:
                 cellProperties.buttonColor ||
                 this.props.accentColor ||
                 Colors.GREEN,
+              buttonIconColor: cellProperties.buttonIconColor || "#FFFFFF",
               buttonVariant: cellProperties.buttonVariant || "PRIMARY",
               borderRadius:
                 borderRadiusUtility(cellProperties.borderRadius) ||

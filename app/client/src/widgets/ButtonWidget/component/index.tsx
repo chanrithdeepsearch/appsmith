@@ -42,6 +42,7 @@ import {
 } from "widgets/WidgetUtils";
 import { DragContainer } from "./DragContainer";
 import { buttonHoverActiveStyles } from "./utils";
+import { FontStyleTypes } from "constants/WidgetConstants";
 
 const RecaptchaWrapper = styled.div`
   position: relative;
@@ -94,7 +95,12 @@ const TooltipStyles = createGlobalStyle`
 const buttonBaseStyle = css<ThemeProp & ButtonStyleProps>`
 height: 100%;
 background-image: none !important;
-font-weight: ${(props) => props.theme.fontWeights[2]};
+font-weight: ${(props) =>
+  props?.buttonFontStyle?.includes(FontStyleTypes.BOLD)
+    ? "bold"
+    : props.theme.fontWeights[2]};
+font-style: ${(props) =>
+  props?.buttonFontStyle?.includes(FontStyleTypes.ITALIC) ? "italic" : ""};
 outline: none;
 padding: 0px 10px;
 gap: 8px;
@@ -188,6 +194,7 @@ export const StyledButton = styled((props) => (
 
 export type ButtonStyleProps = {
   buttonColor?: string;
+  buttonFontStyle?: string;
   buttonTextColor?: string;
   buttonVariant?: ButtonVariant;
   boxShadow?: string;
@@ -205,6 +212,7 @@ export function BaseButton(props: IButtonProps & ButtonStyleProps) {
     boxShadow,
     boxShadowColor,
     buttonColor,
+    buttonFontStyle,
     buttonTextColor,
     buttonVariant,
     className,
@@ -236,6 +244,7 @@ export function BaseButton(props: IButtonProps & ButtonStyleProps) {
         boxShadow={boxShadow}
         boxShadowColor={boxShadowColor}
         buttonColor={buttonColor}
+        buttonFontStyle={buttonFontStyle}
         buttonTextColor={buttonTextColor}
         buttonVariant={buttonVariant}
         className={className}
@@ -284,6 +293,7 @@ interface ButtonComponentProps extends ComponentProps {
   rightIcon?: IconName | MaybeElement;
   type: ButtonType;
   buttonColor?: string;
+  buttonFontStyle?: string;
   buttonTextColor?: string;
   buttonVariant?: ButtonVariant;
   borderRadius?: string;
@@ -456,6 +466,7 @@ function ButtonComponent(props: ButtonComponentProps & RecaptchaProps) {
         boxShadow={props.boxShadow}
         boxShadowColor={props.boxShadowColor}
         buttonColor={props.buttonColor}
+        buttonFontStyle={props.buttonFontStyle}
         buttonTextColor={props.buttonTextColor}
         buttonVariant={props.buttonVariant}
         disabled={props.isDisabled}

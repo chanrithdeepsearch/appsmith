@@ -48,6 +48,7 @@ import MenuButtonTableComponent from "./components/menuButtonTableComponent";
 import { stopClickEventPropagation } from "utils/helpers";
 import tinycolor from "tinycolor2";
 import { generateTableColumnId } from "./TableHelpers";
+import { CustomIconMapper } from "./CustomIcons/CustomIconMapper";
 
 export const renderCell = (
   value: any,
@@ -184,6 +185,8 @@ interface RenderIconButtonProps {
   isSelected: boolean;
   columnActions?: ColumnAction[];
   iconName?: IconName;
+  buttonIconColor?: string;
+  customIconName?: string;
   buttonVariant: ButtonVariant;
   buttonColor: string;
   borderRadius: string;
@@ -220,7 +223,9 @@ export const renderIconButton = (
             borderRadius={props.borderRadius}
             boxShadow={props.boxShadow}
             buttonColor={props.buttonColor}
+            buttonIconColor={props.buttonIconColor}
             buttonVariant={props.buttonVariant}
+            customIconName={props.customIconName}
             disabled={props.disabled}
             iconName={props.iconName}
             isSelected={props.isSelected}
@@ -238,6 +243,8 @@ function IconButton(props: {
   isSelected: boolean;
   action: ColumnAction;
   buttonColor: string;
+  buttonIconColor?: string;
+  customIconName?: string;
   buttonVariant: ButtonVariant;
   borderRadius: string;
   boxShadow: string;
@@ -266,9 +273,14 @@ function IconButton(props: {
         borderRadius={props.borderRadius}
         boxShadow={props.boxShadow}
         buttonColor={props.buttonColor}
+        buttonTextColor={props.buttonIconColor}
         buttonVariant={props.buttonVariant}
         disabled={props.disabled}
-        icon={props.iconName}
+        icon={
+          props.customIconName && props.customIconName != ""
+            ? CustomIconMapper.getCustomIcon(props.customIconName || "")
+            : props.iconName
+        }
         loading={loading}
         onClick={handleClick}
       />

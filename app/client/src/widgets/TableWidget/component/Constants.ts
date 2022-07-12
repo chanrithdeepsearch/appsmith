@@ -117,6 +117,8 @@ export interface CellLayoutProperties {
   menuVariant?: ButtonVariant;
   menuColor?: string;
   iconName?: IconName;
+  buttonIconColor?: string;
+  customIconName?: string;
   iconAlign?: Alignment;
   onItemClicked?: (onClick: string | undefined) => void;
   buttonLabelColor?: string;
@@ -199,6 +201,8 @@ export interface ColumnProperties {
   boxShadow?: string;
   boxShadowColor?: string;
   iconName?: IconName;
+  customIconName?: string;
+  buttonIconColor?: string;
   iconAlign?: Alignment;
   onItemClicked?: (onClick: string | undefined) => void;
   iconButtonStyle?: ButtonStyleType;

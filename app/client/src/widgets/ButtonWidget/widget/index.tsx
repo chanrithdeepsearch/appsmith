@@ -159,6 +159,25 @@ class ButtonWidget extends BaseWidget<ButtonWidgetProps, ButtonWidgetState> {
             validation: { type: ValidationTypes.TEXT },
           },
           {
+            propertyName: "buttonFontStyle",
+            label: "Button Font Style",
+            controlType: "BUTTON_TABS",
+            options: [
+              {
+                icon: "BOLD_FONT",
+                value: "BOLD",
+              },
+              {
+                icon: "ITALICS_FONT",
+                value: "ITALIC",
+              },
+            ],
+            isJSConvertible: true,
+            isBindProperty: true,
+            isTriggerProperty: false,
+            validation: { type: ValidationTypes.TEXT },
+          },
+          {
             propertyName: "buttonVariant",
             label: "Button Variant",
             controlType: "DROP_DOWN",
@@ -363,6 +382,7 @@ class ButtonWidget extends BaseWidget<ButtonWidgetProps, ButtonWidgetState> {
         borderRadius={this.props.borderRadius}
         boxShadow={this.props.boxShadow}
         buttonColor={this.props.buttonColor}
+        buttonFontStyle={this.props.buttonFontStyle}
         buttonTextColor={this.props.buttonTextColor}
         buttonVariant={this.props.buttonVariant}
         clickWithRecaptcha={this.clickWithRecaptchaBound}
@@ -401,6 +421,7 @@ export interface ButtonWidgetProps extends WidgetProps {
   buttonVariant?: ButtonVariant;
   buttonColor?: string;
   buttonTextColor?: string;
+  buttonFontStyle?: string;
   borderRadius?: string;
   boxShadow?: string;
   iconName?: IconName;
