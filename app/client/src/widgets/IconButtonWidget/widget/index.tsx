@@ -15,6 +15,7 @@ const ICON_NAMES = Object.keys(IconNames).map(
 );
 export interface IconButtonWidgetProps extends WidgetProps {
   iconName?: IconName;
+  customIconName?: string;
   backgroundColor: string;
   buttonVariant: ButtonVariant;
   borderRadius: string;
@@ -47,6 +48,16 @@ class IconButtonWidget extends BaseWidget<IconButtonWidgetProps, WidgetState> {
                 default: IconNames.PLUS,
               },
             },
+          },
+          {
+            helpText: "Custom Icon Name",
+            propertyName: "customIconName",
+            label: "Custom Icon Name",
+            controlType: "INPUT_TEXT",
+            placeholderText: "Add Input Field",
+            isBindProperty: true,
+            isTriggerProperty: false,
+            validation: { type: ValidationTypes.TEXT },
           },
           {
             helpText: "Show helper text with button on hover",
@@ -190,6 +201,7 @@ class IconButtonWidget extends BaseWidget<IconButtonWidgetProps, WidgetState> {
       boxShadow,
       buttonColor,
       buttonVariant,
+      customIconName,
       iconName,
       isDisabled,
       isVisible,
@@ -203,6 +215,7 @@ class IconButtonWidget extends BaseWidget<IconButtonWidgetProps, WidgetState> {
         boxShadow={boxShadow}
         buttonColor={buttonColor}
         buttonVariant={buttonVariant}
+        customIconName={customIconName}
         hasOnClickAction={!!this.props.onClick}
         height={
           (this.props.bottomRow - this.props.topRow) * this.props.parentRowSpace

@@ -25,6 +25,7 @@ import {
 import { createGlobalStyle } from "constants/DefaultTheme";
 import Interweave from "interweave";
 import { Popover2 } from "@blueprintjs/popover2";
+import { CustomIconMapper } from "widgets/TableWidget/component/CustomIcons/CustomIconMapper";
 
 const ToolTipWrapper = styled.div`
   height: 100%;
@@ -220,6 +221,7 @@ export const StyledButton = styled((props) => (
 
 export interface IconButtonComponentProps extends ComponentProps {
   iconName?: IconName;
+  customIconName?: string;
   buttonColor?: string;
   buttonVariant: ButtonVariant;
   borderRadius: string;
@@ -282,7 +284,11 @@ function IconButtonComponent(props: IconButtonComponentProps) {
         dimension={dimension}
         disabled={isDisabled}
         hasOnClickAction={hasOnClickAction}
-        icon={props.iconName}
+        icon={
+          props.customIconName && props.customIconName != ""
+            ? CustomIconMapper.getCustomIcon(props.customIconName || "")
+            : props.iconName
+        }
         large
       />
     </IconButtonContainer>
