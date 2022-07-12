@@ -935,6 +935,57 @@ export default [
                   isTriggerProperty: false,
                 },
                 {
+                  propertyName: "buttonIconColor",
+                  getStylesheetValue: getPrimaryColumnStylesheetValue,
+                  label: "Button Icon Color",
+                  controlType: "PRIMARY_COLUMNS_COLOR_PICKER",
+                  helpText: "Changes the color of the button",
+                  isJSConvertible: true,
+                  customJSControl: "COMPUTE_VALUE",
+                  updateHook: updateDerivedColumnsHook,
+                  hidden: (props: TableWidgetProps, propertyPath: string) => {
+                    return hideByColumnType(props, propertyPath, [
+                      ColumnTypes.BUTTON,
+                      ColumnTypes.ICON_BUTTON,
+                    ]);
+                  },
+                  dependencies: [
+                    "primaryColumns",
+                    "derivedColumns",
+                    "columnOrder",
+                  ],
+                  isBindProperty: true,
+                  validation: {
+                    type: ValidationTypes.TABLE_PROPERTY,
+                    params: {
+                      type: ValidationTypes.TEXT,
+                      params: {
+                        regex: /^(?![<|{{]).+/,
+                      },
+                    },
+                  },
+                  isTriggerProperty: false,
+                },
+                {
+                  propertyName: "customIconName",
+                  label: "Custom Icon Name",
+                  controlType: "COMPUTE_VALUE",
+                  defaultValue: "",
+                  updateHook: updateDerivedColumnsHook,
+                  hidden: (props: TableWidgetProps, propertyPath: string) => {
+                    return hideByColumnType(props, propertyPath, [
+                      ColumnTypes.ICON_BUTTON,
+                    ]);
+                  },
+                  dependencies: [
+                    "primaryColumns",
+                    "derivedColumns",
+                    "columnOrder",
+                  ],
+                  isBindProperty: true,
+                  isTriggerProperty: false,
+                },
+                {
                   propertyName: "buttonVariant",
                   label: "Button Variant",
                   controlType: "DROP_DOWN",

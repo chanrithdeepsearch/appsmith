@@ -62,6 +62,16 @@ export const getCellProperties = (
         true,
       ),
       iconName: getPropertyValue(columnProperties.iconName, rowIndex, true),
+      customIconName: getPropertyValue(
+        columnProperties.customIconName,
+        rowIndex,
+        true,
+      ),
+      buttonIconColor: getPropertyValue(
+        columnProperties.buttonIconColor,
+        rowIndex,
+        true,
+      ),
       buttonVariant: getPropertyValue(
         columnProperties.buttonVariant,
         rowIndex,

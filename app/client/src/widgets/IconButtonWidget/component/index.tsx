@@ -104,6 +104,7 @@ export interface ButtonStyleProps {
   borderRadius?: ButtonBorderRadius;
   boxShadow?: string;
   buttonColor: string;
+  buttonTextColor?: string;
   buttonVariant?: ButtonVariant;
   dimension?: number;
   hasOnClickAction?: boolean;
@@ -127,7 +128,13 @@ export const StyledButton = styled((props) => (
   min-height: 32px !important;
   min-width: 32px !important;
 
-  ${({ buttonColor, buttonVariant, hasOnClickAction, theme }) => `
+  ${({
+    buttonColor,
+    buttonTextColor,
+    buttonVariant,
+    hasOnClickAction,
+    theme,
+  }) => `
     &:enabled {
       background: ${
         getCustomBackgroundColor(buttonVariant, buttonColor) !== "none"
@@ -185,7 +192,9 @@ export const StyledButton = styled((props) => (
       align-items: center;
 
       color: ${
-        buttonVariant === ButtonVariantTypes.PRIMARY
+        buttonTextColor && buttonTextColor !== ""
+          ? buttonTextColor
+          : buttonVariant === ButtonVariantTypes.PRIMARY
           ? getComplementaryGrayscaleColor(buttonColor)
           : getCustomBackgroundColor(
               ButtonVariantTypes.PRIMARY,
