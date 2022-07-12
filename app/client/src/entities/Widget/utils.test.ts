@@ -133,6 +133,8 @@ describe("getAllPathsFromPropertyConfig", () => {
           EvaluationSubstitutionType.TEMPLATE,
         "primaryColumns.status.buttonColor":
           EvaluationSubstitutionType.TEMPLATE,
+        "primaryColumns.status.buttonIconColor":
+          EvaluationSubstitutionType.TEMPLATE,
         "primaryColumns.status.buttonLabel":
           EvaluationSubstitutionType.TEMPLATE,
         "primaryColumns.status.isDisabled": EvaluationSubstitutionType.TEMPLATE,
@@ -219,6 +221,13 @@ describe("getAllPathsFromPropertyConfig", () => {
           },
         },
         "primaryColumns.status.buttonColor": {
+          type: ValidationTypes.TABLE_PROPERTY,
+          params: {
+            type: ValidationTypes.TEXT,
+            params: { regex: /^(?![<|{{]).+/ },
+          },
+        },
+        "primaryColumns.status.buttonIconColor": {
           type: ValidationTypes.TABLE_PROPERTY,
           params: {
             type: ValidationTypes.TEXT,
@@ -408,6 +417,8 @@ describe("getAllPathsFromPropertyConfig", () => {
         "primaryColumns.status.buttonVariant":
           EvaluationSubstitutionType.TEMPLATE,
         "primaryColumns.status.buttonColor":
+          EvaluationSubstitutionType.TEMPLATE,
+        "primaryColumns.status.buttonIconColor":
           EvaluationSubstitutionType.TEMPLATE,
         "primaryColumns.status.buttonLabel":
           EvaluationSubstitutionType.TEMPLATE,
