@@ -101,6 +101,10 @@ export const getCellProperties = (
         columnProperties.isCellVisible,
         rowIndex,
       ),
+      isCellFlexible: getBooleanPropertyValue(
+        columnProperties.isCellFlexible,
+        rowIndex,
+      ),
       displayText: getPropertyValue(
         columnProperties.displayText,
         rowIndex,

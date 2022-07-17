@@ -326,16 +326,39 @@ class TableWidget extends BaseWidget<TableWidgetProps, WidgetState> {
       }
     }
     if (totalColumnSizes < componentWidth) {
-      const lastColumnIndex = columns.length - 1;
-      let remainingColumnsSize = 0;
-      for (let i = 0; i < columns.length - 1; i++) {
-        remainingColumnsSize += columns[i].width || defaultColumnWidth;
-      }
-      if (columns[lastColumnIndex]) {
-        columns[lastColumnIndex].width =
-          componentWidth - remainingColumnsSize < defaultColumnWidth
-            ? defaultColumnWidth
-            : componentWidth - remainingColumnsSize; //Min remaining width to be defaultColumnWidth
+      const flexibleColumn = columns.filter(
+        (c) => c.columnProperties?.isCellFlexible || false,
+      );
+      if (flexibleColumn.length > 0) {
+        let remainingColumnsSize = 0;
+        for (let i = 0; i < columns.length; i++) {
+          if (!(columns[i].columnProperties?.isCellFlexible || false)) {
+            remainingColumnsSize += columns[i].width || defaultColumnWidth;
+          }
+        }
+        if (flexibleColumn.length > 0) {
+          const flexibleColumnWidth = componentWidth - remainingColumnsSize;
+          for (let i = 0; i < columns.length; i++) {
+            if (columns[i].columnProperties.isCellFlexible || false) {
+              columns[i].width = flexibleColumnWidth / flexibleColumn.length;
+            }
+          }
+        }
+      } else {
+        const lastColumnIndex = columns.length - 1;
+        let remainingColumnsSize = 0;
+        for (let i = 0; i < columns.length - 1; i++) {
+          if (i !== lastColumnIndex) {
+            remainingColumnsSize += columns[i].width || defaultColumnWidth;
+          }
+          if (columns[lastColumnIndex]) {
+            columns[lastColumnIndex].width =
+              componentWidth - remainingColumnsSize;
+            // componentWidth - remainingColumnsSize < defaultColumnWidth
+            //   ? defaultColumnWidth
+            //   : componentWidth - remainingColumnsSize; //Min remaining width to be defaultColumnWidth
+          }
+        }
       }
     }
     if (hiddenColumns.length && this.props.renderMode === RenderModes.CANVAS) {

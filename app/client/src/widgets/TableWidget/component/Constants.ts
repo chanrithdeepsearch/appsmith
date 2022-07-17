@@ -113,6 +113,7 @@ export interface CellLayoutProperties {
   borderRadius: string;
   boxShadow: string;
   isCellVisible: boolean;
+  isCellFlexible?: boolean;
   isCompact?: boolean;
   menuItems: MenuItems;
   menuVariant?: ButtonVariant;
@@ -209,6 +210,7 @@ export interface ColumnProperties {
   onItemClicked?: (onClick: string | undefined) => void;
   iconButtonStyle?: ButtonStyleType;
   isCellVisible?: boolean;
+  isCellFlexible?: boolean;
 }
 
 export const ConditionFunctions: {
