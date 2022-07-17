@@ -81,6 +81,7 @@ interface TableProps {
   accentColor: string;
   borderRadius: string;
   boxShadow?: string;
+  cellFontStyle?: string;
 }
 
 const defaultColumn = {
@@ -318,6 +319,7 @@ export function Table(props: TableProps) {
                       (column: any, columnIndex: number) => {
                         return (
                           <TableHeaderCell
+                            cellFontStyle={props.cellFontStyle}
                             column={column}
                             columnIndex={columnIndex}
                             columnName={column.Header}

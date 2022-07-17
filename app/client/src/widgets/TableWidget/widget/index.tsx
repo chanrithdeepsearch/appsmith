@@ -831,6 +831,7 @@ class TableWidget extends BaseWidget<TableWidgetProps, WidgetState> {
           applyFilter={this.applyFilters}
           borderRadius={this.props.borderRadius}
           boxShadow={this.props.boxShadow}
+          cellFontStyle={this.props.cellfontStyle}
           columnSizeMap={this.props.columnSizeMap}
           columns={tableColumns}
           compactMode={this.props.compactMode || CompactModeTypes.DEFAULT}

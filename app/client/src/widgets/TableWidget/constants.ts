@@ -13,6 +13,7 @@ export interface TableWidgetProps extends WidgetProps, WithMeta, TableStyles {
   prevPageKey?: string;
   label: string;
   searchText: string;
+  cellfontStyle?: string;
   defaultSearchText: string;
   defaultSelectedRow?: number | number[] | string;
   tableData: Array<Record<string, unknown>>;

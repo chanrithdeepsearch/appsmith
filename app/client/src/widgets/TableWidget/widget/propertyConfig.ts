@@ -1742,10 +1742,10 @@ export default [
         validation: { type: ValidationTypes.TEXT },
       },
       {
-        propertyName: "fontStyle",
-        label: "Font Style",
+        propertyName: "cellfontStyle",
+        label: "Cell Font Style",
         controlType: "BUTTON_TABS",
-        updateHook: updateColumnStyles,
+        // updateHook: updateColumnStyles,
         dependencies: ["primaryColumns", "derivedColumns"],
         options: [
           {
