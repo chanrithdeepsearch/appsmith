@@ -4,6 +4,7 @@ import {
   ReactTableFilter,
   TableStyles,
   SortOrderTypes,
+  CellAlignment,
 } from "./component/Constants";
 import { WidgetProps } from "widgets/BaseWidget";
 import { WithMeta } from "widgets/MetaHOC";
@@ -14,6 +15,7 @@ export interface TableWidgetProps extends WidgetProps, WithMeta, TableStyles {
   label: string;
   searchText: string;
   cellfontStyle?: string;
+  cellTextAlign?: CellAlignment;
   defaultSearchText: string;
   defaultSelectedRow?: number | number[] | string;
   tableData: Array<Record<string, unknown>>;

@@ -23,6 +23,7 @@ import {
   CellLayoutProperties,
   TableStyles,
   MenuItems,
+  CellAlignment,
 } from "./Constants";
 import { isString, isEmpty, findIndex, isNil, isNaN, get, set } from "lodash";
 import PopoverVideo from "widgets/VideoWidget/component/PopoverVideo";
@@ -634,6 +635,7 @@ export function TableHeaderCell(props: {
   columnName: string;
   columnIndex: number;
   cellFontStyle?: string;
+  cellTextAlign?: CellAlignment;
   isHidden: boolean;
   isAscOrder?: boolean;
   sortTableColumn: (columnIndex: number, asc: boolean) => void;
@@ -668,7 +670,7 @@ export function TableHeaderCell(props: {
       >
         <AutoToolTipComponent
           cellProperties={{
-            horizontalAlignment: column.columnProperties.horizontalAlignment,
+            horizontalAlignment: props.cellTextAlign || CellAlignmentTypes.LEFT,
             fontStyle: props.cellFontStyle || FontWeight.BOLD,
             buttonVariant: column.columnProperties.buttonVariant,
             borderRadius: column.columnProperties.borderRadius,

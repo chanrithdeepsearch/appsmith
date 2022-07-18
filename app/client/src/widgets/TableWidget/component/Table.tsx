@@ -27,6 +27,7 @@ import {
   TABLE_SIZES,
   CompactMode,
   CompactModeTypes,
+  CellAlignment,
 } from "./Constants";
 import { Colors } from "constants/Colors";
 
@@ -82,6 +83,7 @@ interface TableProps {
   borderRadius: string;
   boxShadow?: string;
   cellFontStyle?: string;
+  cellTextAlign?: CellAlignment;
 }
 
 const defaultColumn = {
@@ -320,6 +322,7 @@ export function Table(props: TableProps) {
                         return (
                           <TableHeaderCell
                             cellFontStyle={props.cellFontStyle}
+                            cellTextAlign={props.cellTextAlign}
                             column={column}
                             columnIndex={columnIndex}
                             columnName={column.Header}

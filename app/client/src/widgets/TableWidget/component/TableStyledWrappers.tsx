@@ -393,7 +393,7 @@ export const CellWrapper = styled.div<{
     props?.cellProperties?.fontStyle?.includes(FontStyleTypes.BOLD)
       ? "bold"
       : "normal"};
-  width: ${(props) => (props.isPadding ? "100%" : "calc(100% - 10px)")};
+  width: 100%;
   height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

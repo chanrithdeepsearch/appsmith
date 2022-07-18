@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import Table from "./Table";
 import {
+  CellAlignment,
   ColumnTypes,
   CompactMode,
   ReactTableColumnProps,
@@ -80,12 +81,14 @@ interface ReactTableComponentProps {
   borderRadius: string;
   boxShadow?: string;
   cellFontStyle?: string;
+  cellTextAlign?: CellAlignment;
 }
 
 function ReactTableComponent(props: ReactTableComponentProps) {
   const {
     applyFilter,
     cellFontStyle,
+    cellTextAlign,
     columns,
     columnSizeMap,
     compactMode,
@@ -262,6 +265,7 @@ function ReactTableComponent(props: ReactTableComponentProps) {
       borderRadius={props.borderRadius}
       boxShadow={props.boxShadow}
       cellFontStyle={cellFontStyle}
+      cellTextAlign={cellTextAlign}
       columnSizeMap={columnSizeMap}
       columns={columns}
       compactMode={compactMode}
@@ -311,6 +315,7 @@ export default React.memo(ReactTableComponent, (prev, next) => {
     prev.applyFilter === next.applyFilter &&
     prev.compactMode === next.compactMode &&
     prev.cellFontStyle === next.cellFontStyle &&
+    prev.cellTextAlign === next.cellTextAlign &&
     prev.delimiter === next.delimiter &&
     prev.disableDrag === next.disableDrag &&
     prev.editMode === next.editMode &&

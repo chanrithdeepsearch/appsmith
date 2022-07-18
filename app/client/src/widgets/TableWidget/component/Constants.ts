@@ -101,6 +101,7 @@ export interface CellLayoutProperties {
   textSize?: string;
   fontStyle?: string;
   cellfontStyle?: string;
+  cellTextAlign?: CellAlignment;
   textColor?: string;
   cellBackground?: string;
   buttonColor?: string;
@@ -177,6 +178,7 @@ export interface ColumnProperties {
   width: number;
   cellBackground?: string;
   cellfontStyle?: string;
+  cellTextAlign?: CellAlignment;
   horizontalAlignment?: CellAlignment;
   verticalAlignment?: VerticalAlignment;
   textSize?: string;
