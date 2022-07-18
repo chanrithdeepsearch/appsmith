@@ -855,6 +855,7 @@ class TableWidget extends BaseWidget<TableWidgetProps, WidgetState> {
           borderRadius={this.props.borderRadius}
           boxShadow={this.props.boxShadow}
           cellFontStyle={this.props.cellfontStyle}
+          cellTextAlign={this.props.cellTextAlign}
           columnSizeMap={this.props.columnSizeMap}
           columns={tableColumns}
           compactMode={this.props.compactMode || CompactModeTypes.DEFAULT}

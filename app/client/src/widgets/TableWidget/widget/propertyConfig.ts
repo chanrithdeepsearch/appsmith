@@ -1785,10 +1785,10 @@ export default [
         isTriggerProperty: false,
       },
       {
-        propertyName: "horizontalAlignment",
-        label: "Text Align",
+        propertyName: "cellTextAlign",
+        label: "Cell Text Align",
         controlType: "ICON_TABS",
-        updateHook: updateColumnStyles,
+        //updateHook: updateColumnStyles,
         dependencies: ["primaryColumns", "derivedColumns"],
         options: [
           {
