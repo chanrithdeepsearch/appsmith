@@ -206,6 +206,30 @@ export default [
                   },
                 },
                 {
+                  propertyName: "isCellFlexible",
+                  dependencies: [
+                    "primaryColumns",
+                    "derivedColumns",
+                    "columnType",
+                  ],
+                  label: "Flxible Width",
+                  helpText:
+                    "Controls the flexibility of the cell in the column",
+                  updateHook: updateDerivedColumnsHook,
+                  defaultValue: false,
+                  controlType: "SWITCH",
+                  customJSControl: "COMPUTE_VALUE",
+                  isJSConvertible: true,
+                  isBindProperty: true,
+                  isTriggerProperty: false,
+                  validation: {
+                    type: ValidationTypes.TABLE_PROPERTY,
+                    params: {
+                      type: ValidationTypes.BOOLEAN,
+                    },
+                  },
+                },
+                {
                   propertyName: "isDisabled",
                   label: "Disabled",
                   updateHook: updateDerivedColumnsHook,
@@ -1742,10 +1766,10 @@ export default [
         validation: { type: ValidationTypes.TEXT },
       },
       {
-        propertyName: "fontStyle",
-        label: "Font Style",
+        propertyName: "cellfontStyle",
+        label: "Cell Font Style",
         controlType: "BUTTON_TABS",
-        updateHook: updateColumnStyles,
+        // updateHook: updateColumnStyles,
         dependencies: ["primaryColumns", "derivedColumns"],
         options: [
           {

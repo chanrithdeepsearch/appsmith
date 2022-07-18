@@ -50,6 +50,7 @@ export const getCellProperties = (
         columnProperties.cellBackground,
         rowIndex,
       ),
+      cellfontStyle: getPropertyValue(columnProperties.cellfontStyle, rowIndex),
       buttonColor: getPropertyValue(columnProperties.buttonColor, rowIndex),
       buttonLabel: getPropertyValue(
         columnProperties.buttonLabel,
@@ -98,6 +99,10 @@ export const getCellProperties = (
       ),
       isCellVisible: getBooleanPropertyValue(
         columnProperties.isCellVisible,
+        rowIndex,
+      ),
+      isCellFlexible: getBooleanPropertyValue(
+        columnProperties.isCellFlexible,
         rowIndex,
       ),
       displayText: getPropertyValue(

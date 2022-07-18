@@ -79,11 +79,13 @@ interface ReactTableComponentProps {
   accentColor: string;
   borderRadius: string;
   boxShadow?: string;
+  cellFontStyle?: string;
 }
 
 function ReactTableComponent(props: ReactTableComponentProps) {
   const {
     applyFilter,
+    cellFontStyle,
     columns,
     columnSizeMap,
     compactMode,
@@ -259,6 +261,7 @@ function ReactTableComponent(props: ReactTableComponentProps) {
       applyFilter={applyFilter}
       borderRadius={props.borderRadius}
       boxShadow={props.boxShadow}
+      cellFontStyle={cellFontStyle}
       columnSizeMap={columnSizeMap}
       columns={columns}
       compactMode={compactMode}
@@ -307,6 +310,7 @@ export default React.memo(ReactTableComponent, (prev, next) => {
   return (
     prev.applyFilter === next.applyFilter &&
     prev.compactMode === next.compactMode &&
+    prev.cellFontStyle === next.cellFontStyle &&
     prev.delimiter === next.delimiter &&
     prev.disableDrag === next.disableDrag &&
     prev.editMode === next.editMode &&

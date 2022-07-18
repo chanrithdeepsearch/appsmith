@@ -49,6 +49,7 @@ import { stopClickEventPropagation } from "utils/helpers";
 import tinycolor from "tinycolor2";
 import { generateTableColumnId } from "./TableHelpers";
 import { CustomIconMapper } from "./CustomIcons/CustomIconMapper";
+import { FontWeight } from "design-system";
 
 export const renderCell = (
   value: any,
@@ -632,6 +633,7 @@ const DescendingIcon = styled(ControlIcons.SORT_CONTROL as AnyStyledComponent)`
 export function TableHeaderCell(props: {
   columnName: string;
   columnIndex: number;
+  cellFontStyle?: string;
   isHidden: boolean;
   isAscOrder?: boolean;
   sortTableColumn: (columnIndex: number, asc: boolean) => void;
@@ -665,6 +667,15 @@ export function TableHeaderCell(props: {
         horizontalAlignment={column.columnProperties.horizontalAlignment}
       >
         <AutoToolTipComponent
+          cellProperties={{
+            horizontalAlignment: column.columnProperties.horizontalAlignment,
+            fontStyle: props.cellFontStyle || FontWeight.BOLD,
+            buttonVariant: column.columnProperties.buttonVariant,
+            borderRadius: column.columnProperties.borderRadius,
+            boxShadow: column.columnProperties.boxShadow,
+            menuItems: column.columnProperties.menuItems,
+            isCellVisible: column.columnProperties.isCellVisible,
+          }}
           noPadding
           tableWidth={width}
           title={props.columnName}

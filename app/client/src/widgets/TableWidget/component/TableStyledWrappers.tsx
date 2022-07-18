@@ -385,7 +385,14 @@ export const CellWrapper = styled.div<{
 }>`
   display: ${(props) => (props.isCellVisible !== false ? "flex" : "none")};
   align-items: ${(props) => (props.isPadding ? "center" : "flex-start")};
-  justify-content: flex-start;
+  justify-content: ${(props) =>
+    props.cellProperties?.horizontalAlignment
+      ? props.cellProperties?.horizontalAlignment
+      : "flex-start"};
+  font-weight: ${(props) =>
+    props?.cellProperties?.fontStyle?.includes(FontStyleTypes.BOLD)
+      ? "bold"
+      : "normal"};
   width: ${(props) => (props.isPadding ? "100%" : "calc(100% - 10px)")};
   height: 100%;
   overflow: hidden;
